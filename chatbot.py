@@ -9,7 +9,13 @@ start = time.time()
 bot = ChatBot('Gideon')
 trainer = ChatterBotCorpusTrainer(bot)
 trainer.train(
-    'chatterbot.corpus.english'
+    "chatterbot.corpus.english.conversations",
+    "chatterbot.corpus.english.ai",
+    "chatterbot.corpus.english.greetings",
+    "chatterbot.corpus.english.humor",
+    "chatterbot.corpus.english.emotion",
+    "chatterbot.corpus.english.gossip",
+    "chatterbot.corpus.english.science"
 )
 end = time.time()
 
@@ -19,6 +25,7 @@ start = time.time()
 main = Tk()
 
 main.geometry("500x650")
+
 
 main.title("Gideon")
 
@@ -59,9 +66,11 @@ def takeQuery():
 
 frame = Frame(main)
 
-# main.attributes('-fullscreen', True)
+main.attributes('-fullscreen', True)
 
 sc = Scrollbar(frame)
+
+frame.tk.call('tk', 'scaling', 1.5)
 
 width = frame.winfo_width()
 
@@ -93,14 +102,5 @@ def enter_function(event):
 # going to bind main window with enter key...
 
 main.bind('<Return>', enter_function)
-
-"""
-def repeatL():
-    takeQuery()
-
-
-t = threading.Thread(target=repeatL)
-
-t.start()"""
 
 main.mainloop()
